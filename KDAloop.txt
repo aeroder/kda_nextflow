@@ -1,0 +1,51 @@
+
+####DEMO
+Rscript /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/KDA_new/R-keydriver-analysis.R "Undirected" /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/Demo/BN_digraph_pruned_formatted /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/Demo/KDAInputFile.txt /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/Demo/KDA/ 6
+
+####
+
+
+
+
+Rscript /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/KDA_new/R-keydriver-analysis.R "Undirected" /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Pancreas-Selected-Meds_23Q1/BayesianNetwork/forBN/Pancreas-Selected-Meds_23Q1/consensus_results/BN_digraph_pruned_formatted /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Pancreas-Selected-Meds_23Q1/tables/KDA/KDAInputFile.txt /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Pancreas-Selected-Meds_23Q1/tables/KDA/ 6
+
+
+Rscript /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/KDA_new/R-keydriver-analysis.R "Undirected" /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Ovarian_23Q1/BayesianNetwork/forBN/Ovarian_23Q1/consensus_results/BN_digraph_pruned_formatted /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Ovarian_23Q1/tables/KDA/KDAInputFile.txt /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Ovarian_23Q1/tables/KDA/ 6
+
+
+Rscript /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/KDA_new/R-keydriver-analysis.R "Undirected" /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/NSCLC-selected-meds_22Q4/BayesianNetwork/forBN/NSCLC-selected-meds_22Q4/consensus_results/BN_digraph_pruned_formatted /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/NSCLC-selected-meds_22Q4/tables/KDA/KDAInputFile.txt /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/NSCLC-selected-meds_22Q4/tables/KDA/ 6
+
+
+Rscript /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/KDA_new/R-keydriver-analysis.R "Undirected" /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/mCRPC_22Q4/BayesianNetwork/forBN/mCRPC_22Q4/consensus_results/BN_digraph_pruned_formatted /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/mCRPC_22Q4/tables/KDA/KDAInputFile.txt /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/mCRPC_22Q4/tables/KDA/ 6
+
+
+Rscript /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/KDA_new/R-keydriver-analysis.R "Undirected" /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Colorectal-Selected-Meds_23Q1/BayesianNetwork/forBN/Colorectal-Selected-Meds_23Q1/consensus_results/BN_digraph_pruned_formatted /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Colorectal-Selected-Meds_23Q1/tables/KDA/KDAInputFile.txt /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Colorectal-Selected-Meds_23Q1/tables/KDA/ 6
+
+
+###PDAC
+Rscript /Users/phillipcomella/Downloads/KDA_new/R-keydriver-analysis.R "Undirected" /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Pancreas-Selected-Meds_23Q1/BayesianNetwork/PDAC_Counts/forBN/PDAC/consensus_results/BN_digraph_pruned_formatted /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Pancreas-Selected-Meds_23Q1/BayesianNetwork/PDAC_Counts/KDA/KDAInputFile.txt /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Pancreas-Selected-Meds_23Q1/BayesianNetwork/PDAC_Counts/KDA/ 6
+
+Rscript /Users/phillipcomella/Downloads/KDA_new/R-keydriver-analysis.R "Undirected" /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Pancreas-Selected-Meds_23Q1/BayesianNetwork/forBN/Pancreas-Selected-Meds_23Q1/consensus_results/BN_digraph_pruned_formatted /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Pancreas-Selected-Meds_23Q1/BayesianNetwork/PDAC_Counts/KDA/KDAInputFile.txt /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/p0044_coexpression_nets_workflow/results/Pancreas-Selected-Meds_23Q1/tables/KDA/ 6
+
+
+
+
+#Single List
+ml R
+for network in `ls /sc/arion/projects/schade01a/Phillip_IBD/AllNetworks/*_ParentChild.txt`;
+do
+    echo ${network}
+    for file in `ls /sc/arion/projects/schade01a/Phillip_IBD/AllNetworks/protein_class_FDA_forKDA.txt`;
+    do
+        echo ${file}
+        #Directed Keydrivers
+        #Arguments
+        # networkFile: ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
+        # targetFile: Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global".
+        # outputDirectory: where you want this to be saved. This creates a subfolder called KDA.
+        # number_of_layers: normally 6 steps away.
+        bsub -q premium -P acc_schade01a -n 1 -W 15:00 -o /sc/arion/projects/schade01a/Phillip_IBD/AllNetworks/StderrStdout/%J.stdout -eo /sc/arion/projects/schade01a/Phillip_IBD/AllNetworks/StderrStdout/%J.stderr Rscript /hpc/users/comelp01/code/KDA_new/R-keydriver-analysis.R  ${network} ${file} /sc/arion/projects/schade01a/Phillip_IBD/AllNetworks/ 6
+        #Undirected Keydrivers
+        # bsub -q premium -P acc_schade01a -n 1 -W 15:00 -o %J.stdout -eo %J.stderr Rscript /hpc/users/comelp01/code/KDA_new/R-keydriver-analysis-undirected.R  ${network} ${file} /sc/arion//projects/schade01a/Phillip_IBD/AllNetworks/ 6
+    done
+done
