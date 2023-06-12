@@ -5,7 +5,6 @@
 # old code files
 ignore/
 data/
-results/
 
 # Session Data files
 .RData

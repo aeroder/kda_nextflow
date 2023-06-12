@@ -36,8 +36,7 @@ outputDirectory=args[4] #where you want this to be saved. This creates a subfold
 number_of_layers=args[5] #normally 6 steps away. 
 
 ##Location of KDA R functions, make sure / at the end
-KDARfunctions = "/Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/KDA_new/R/"
-
+KDARfunctions = "code/R/"
 
 fcausalnet <- networkFile
 finputlist <- targetFile
@@ -53,6 +52,11 @@ if ( directed ){
   dir.create( paste(outputDir,"KeyDriversUndirected/",sep=""))
 }
 
+# for testing
+# fcausalnet <- "input/BN_digraph_pruned_formatted"
+# finputlist <- "input/KDAInputFile.txt"
+# layer <- as.numeric(6)
+# outputDir <- "results/"
 
 #
 # -----------------------------End of Parameters to be changed --------------------------------------
@@ -60,11 +64,12 @@ if ( directed ){
 #install.packages("cluster")
 #install.packages("rpart")
 #install.packages("lattice")
-library( class )
-library( cluster )
-library( rpart )
+#install.packages("SpaDES")
+library("class")
+library("cluster")
+library("rpart")
 # library( sma ) # this is needed for plot.mat below
-library( lattice ) # require is design for use inside functions 
+library("lattice") # require is design for use inside functions 
 
 # Windows
 # memory.size( TRUE )   # check the maximum memory that can be allocated
