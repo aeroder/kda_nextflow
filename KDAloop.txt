@@ -1,7 +1,6 @@
 
 ####DEMO
-Rscript /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/KDA_new/R-keydriver-analysis.R "Undirected" /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/Demo/BN_digraph_pruned_formatted /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/Demo/KDAInputFile.txt /Users/phillipcomella/Library/CloudStorage/OneDrive-Pathos/GeneralizedCode/KDA/Demo/KDA/ 6
-
+Rscript code/R-keydriver-analysis.R "Undirected" input/BN_digraph_pruned_formatted input/KDAInputFile.txt results/ 6
 ####
 
 

@@ -1,8 +1,13 @@
-##----------------------------------------------------------------------------------------------------
-# Input: 
+##-----------------------------------------------------------------------
+# Input:
 #   1. directed or undirected network: "Directed" OR "Undirected";
-#   2. causal network: #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim);
-#   3. gene list: #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global".
+#   2. causal network: #ParentChild, BN_digraph_pruned_formatted,
+# (V1(parent), V2(child), tab delim);
+#   3. gene list: #Either local or global seeding gene list.
+# (V1(gene name of network space), V2(group name string))
+#   Break this into parallel jobs.
+#   If global, just use all genes in the network in V1,
+#   call V2 "Allnodes" or "global".
 #   4. outputDirectory: #where you want this to be saved.
 #   5. expand subnetwork based on L-layer neighbors: layer=0
 #   NOTUSED. gene annotation file(NULL if not available): fgeneinfo
@@ -11,11 +16,12 @@
 #    1. keydrivers for each subnetwork: "*_keydriver.txt"
 #    2. Cytoscape network: *_cys.txt #Troubleshooting
 #    3. Cytoscape node properties: *_cys-nodes.txt #Troubleshooting
-#    4. combined keydrivers for all runs: "_KDx_combined.txt" #Likely turning this off to make your own combined
+#    4. combined keydrivers for all runs: "_KDx_combined.txt"
+# Likely turning this off to make your own combined
 #    5. parameters used for key driver analysis: "_KDx_parameters.txt"
 #
 #
-# ---------------------------------- Parameters to be changed -----------------------------------------
+# -------------------- Parameters to be changed -------------------------
 
 args <- commandArgs(trailingOnly = TRUE)
 #For troubleshoting
@@ -25,15 +31,15 @@ args <- commandArgs(trailingOnly = TRUE)
 # args[4]="/results/"
 # args[5]=6
 
-if(args[1] == "Directed"){
+if (args[1] == "Directed") {
   directed <- TRUE
-}else{
+} else {
   directed <- FALSE
 }
-networkFile=args[2] #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
-targetFile=args[3] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
-outputDirectory=args[4] #where you want this to be saved. This creates a subfolder called KDA. 
-number_of_layers=args[5] #normally 6 steps away. 
+networkFile = args[2] #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
+targetFile = args[3] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
+outputDirectory = args[4] #where you want this to be saved. This creates a subfolder called KDA. 
+number_of_layers = args[5] #normally 6 steps away. 
 
 ##Location of KDA R functions, make sure / at the end
 KDARfunctions = "code/R/"
@@ -46,9 +52,9 @@ fgeneinfo <- NULL
 
 # 2. specify the directory for holding analysis results
 
-if ( directed ){
-  dir.create( paste(outputDir,"KeyDriversDirected/",sep=""))
-}else{
+if (directed) {
+  dir.create(paste(outputDir, "KeyDriversDirected/", sep = ""))
+} else {
   dir.create( paste(outputDir,"KeyDriversUndirected/",sep=""))
 }
 
@@ -83,38 +89,23 @@ for (f in list.files(KDARfunctions,pattern="*.R")) {
 ################################################################################################
 #    1. read in network
 
-cnet <- read.delim( fcausalnet , sep = "\t" , header = F )
-cnet <- as.matrix( cnet )
-# dim( cnet )
-cnet=cnet[cnet[,2]!="",]
+cnet <- read.delim(fcausalnet, sep = "\t", header = F)
+cnet <- as.matrix(cnet)
+cnet = cnet[cnet[,2] != "", ]
 
 totalnodes <- union( cnet[,1] , cnet[,2] )
 
-# fname <- getFileName( fcausalnet )
-# all_strings=unlist(strsplit(fname,"/"))
-# output_all_strings=unlist(strsplit(outputDir,"/"))
-# difference=setdiff(output_all_strings,all_strings)
-# if(length(difference)>0){
-#   all_strings_new=all_strings[1:(length(all_strings)-1)]
-#   all_strings_new=c(all_strings_new,difference,"KDA",all_strings[length(all_strings)])
-# }else{
-#   all_strings_new=all_strings[1:(length(all_strings)-1)]
-#   all_strings_new=c(all_strings_new,"KDA",all_strings[length(all_strings)])
-# }
-#
-# fname=paste(all_strings_new,collapse="/")
-# fname <- paste( fname , "_L" , layer , sep = "" )
-
-fname <- gsub(".*/","",getFileName( fcausalnet ))
+#fname <- gsub(".*/","",getFileName(fcausalnet))
+fname <- gsub(".*/","",fcausalnet)
 
 if ( directed ){
   fname <- paste( outputDir,"KeyDriversDirected/", fname , "_L" , layer , sep = "" )
 }else{
-  fname <- paste( outputDir,"KeyDriversUndirected/", fname , "_L" , layer , sep = "" )
+  fname <- paste( outputDir,"KeyDriversUndirected/", fname, "_L", layer , 
+  sep = "" )
 }
 
-
-################################################################################################
+################################################################################
 # 2. read in gene lists
 
 listMatrix <- read.delim( finputlist , sep="\t" , header = TRUE )
@@ -132,7 +123,7 @@ xkdFpara <- paste( fname , "_KDx_parameters", format(Sys.time(), "%Y-%m-%d %I-%p
 xkdrMatrix <- NULL
 paraMatrix <- NULL
 
-################################################################################################
+############################################################################ 
 # 3. process each gene list
 #
 #em=modules[1]
@@ -145,8 +136,8 @@ for ( em in modules ){
   genes <- genes[!is.na( genes )]
   no.genes <- length( genes )
   
-  em2 <- replaceString( em , ":" , "" )
-  em2 <- replaceString( em2 , " " , "-" )
+  em2 <- gsub( em , ":" , "" )
+  em2 <- gsub( em2 , " " , "-" )
   
   key2 <- paste( fname , "_KD_" , em2 , sep = "" )
   onetFname <- paste( key2 , ".pair" , sep = "" )
@@ -192,26 +183,6 @@ for ( em in modules ){
   
   write.table( fkd , kdFname , sep = "\t" , quote = FALSE , col.names = TRUE , row.names = FALSE )
 
-  # ################################################################################################
-  # # 4. output networks & key drivers for visualization
-  # #
-  # #     Cytoscape output: 1) network file - *_cys.txt 2) node property file: *_cys-nodes.txt
-  # #
-  
-  #       nodeprop = configureNodeVisualization(allnodes=allnodes, signature=genes, kdaMatrix=fkd)
-  
-  #       hnList     = nodeprop[[1]] # node subcategpries
-  #       listprop   = nodeprop[[2]] # visual properties for each subcategory
-  #       legend     = nodeprop[[3]] # legend table for visual propertie
-  
-  #       resf = makeSNP(netpairsWtype   = expandNet, 
-  #                edgecolorlevels = c("grey"),
-  #                highlightNodes  = hnList,
-  #                normColor="grey",   highColor=listprop[,1],
-  #                normShape="circle", highShape=listprop[,2],
-  #                normNodeSize ="40",  highNodeSize =listprop[,3],
-  #                normFontSize ="12",  highFontSize =listprop[,4],
-  #                legendtable=legend, snafile=snpFname )
 }
 
 
