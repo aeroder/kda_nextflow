@@ -95,8 +95,9 @@ cnet = cnet[cnet[,2] != "", ]
 
 totalnodes <- union( cnet[,1] , cnet[,2] )
 
-#fname <- gsub(".*/","",getFileName(fcausalnet))
-fname <- gsub(".*/","",fcausalnet)
+fname <- gsub(".*/","",getFileName(fcausalnet))
+#fname <- gsub(".*/","",fcausalnet)
+print(fname)
 
 if ( directed ){
   fname <- paste( outputDir,"KeyDriversDirected/", fname , "_L" , layer , sep = "" )
