@@ -31,18 +31,20 @@ args <- commandArgs(trailingOnly = TRUE)
 # args[4]="/results/"
 # args[5]=6
 
-if (args[1] == "Directed") {
+source_folder <- args[1] 
+
+if (args[2] == "Directed") {
   directed <- TRUE
 } else {
   directed <- FALSE
 }
-networkFile = args[2] #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
+networkFile = args[3] #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
 targetFile = args[3] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
-outputDirectory = args[4] #where you want this to be saved. This creates a subfolder called KDA. 
-number_of_layers = args[5] #normally 6 steps away. 
+outputDirectory = args[5] #where you want this to be saved. This creates a subfolder called KDA. 
+number_of_layers = args[6] #normally 6 steps away. 
 
 ##Location of KDA R functions, make sure / at the end
-KDARfunctions = "code/R/"
+KDARfunctions = source_folder
 
 fcausalnet <- networkFile
 finputlist <- targetFile
@@ -58,13 +60,6 @@ if (directed) {
   dir.create( paste(outputDir,"KeyDriversUndirected/",sep=""))
 }
 
-# for testing
-# fcausalnet <- "input/BN_digraph_pruned_formatted"
-# finputlist <- "input/KDAInputFile.txt"
-# layer <- as.numeric(6)
-# outputDir <- "results/"
-
-#
 # -----------------------------End of Parameters to be changed --------------------------------------
 #install.packages("class")
 #install.packages("cluster")
@@ -74,7 +69,6 @@ if (directed) {
 library("class")
 library("cluster")
 library("rpart")
-# library( sma ) # this is needed for plot.mat below
 library("lattice") # require is design for use inside functions 
 
 # Windows

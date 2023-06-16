@@ -16,3 +16,30 @@ log.info """\
     outdir       : ${params.outdir}
     """
     .stripIndent()
+
+process RUN_KDA {
+
+    input:
+    path source_folder
+    value direction
+    path BN_filename
+    path input_filename
+    path outputDir
+    value layers
+
+    script: 
+    """
+    Rscript R-keydriver-analysis.R $source_folder $direction $BN_filename $input_filename $outputDir $layers 
+    """
+}
+
+workflow {
+    
+    runkda_ch = RUN_KDA(params.source_folder,
+                        params.direction,
+                        params.BN_filename,
+                        params.genelist_filename,
+                        params.outputDir,
+                        params.layers)
+
+}
