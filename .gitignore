@@ -2,6 +2,9 @@
 .Rhistory
 .Rapp.history
 
+# nextflow executable
+nextflow
+
 # old code files
 ignore/
 data/
