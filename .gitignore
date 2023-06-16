@@ -4,10 +4,13 @@
 
 # nextflow executable
 nextflow
+# log files
+.nextflow*
 
 # old code files
 ignore/
 data/
+work/
 
 # Session Data files
 .RData
