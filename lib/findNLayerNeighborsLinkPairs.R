@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 findNLayerNeighborsLinkPairs <- function( linkpairs , subnetNodes , nlayers = 1 , directed = FALSE )
 {
   #linkpairs=linkpairs; subnetNodes=ineighbors; nlayers=nlayers-1; directed=directed

@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 splitString <- function( mystring , separator = "; " )
 {
   splitted <- NULL

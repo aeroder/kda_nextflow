@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 makeSNP <- function( netpairsWtype , highlightNodes = NULL , edgecolorlevels , normColor = "grey" ,
 		     highColor = "red" , normShape = "50" , highShape = "50", 
                      normNodeSize ="1",  highNodeSize="2", normFontSize ="1",    highFontSize="2",

@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+
 configureNodeVisualization = function(allnodes, signature, kdaMatrix, bNodeSz=40, bFontSz=12) {
 
    # SIG--signature; NSIG--not signature; GKD--Global KeyDriver; LKD--Local KeyDriver; NKD--Not KeyDriver

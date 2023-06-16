@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 mergeTwoMatricesByKeepAllPrimary <- function( primaryMatrix , minorMatrix , missinglabel = "" ,
 		                            keepAllPrimary = TRUE , keepPrimaryOrder = TRUE ,
 									keepAll = FALSE )

@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 setInSets <- function( setC , setlist )
 {
    for ( i in c( 1:length( setlist ) ) )

@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+#
 ##-----------------------------------------------------------------------
 # Input:
 #   1. directed or undirected network: "Directed" OR "Undirected";
@@ -39,12 +41,12 @@ if (args[2] == "Directed") {
   directed <- FALSE
 }
 networkFile = args[3] #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
-targetFile = args[3] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
+targetFile = args[4] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
 outputDirectory = args[5] #where you want this to be saved. This creates a subfolder called KDA. 
 number_of_layers = args[6] #normally 6 steps away. 
 
 ##Location of KDA R functions, make sure / at the end
-KDARfunctions = source_folder
+#KDARfunctions = "lib"
 
 fcausalnet <- networkFile
 finputlist <- targetFile
@@ -57,7 +59,7 @@ fgeneinfo <- NULL
 if (directed) {
   dir.create(paste(outputDir, "KeyDriversDirected/", sep = ""))
 } else {
-  dir.create( paste(outputDir,"KeyDriversUndirected/",sep=""))
+  dir.create( paste(outputDir,"KeyDriversUndirected/", sep=""))
 }
 
 # -----------------------------End of Parameters to be changed --------------------------------------
@@ -66,6 +68,8 @@ if (directed) {
 #install.packages("rpart")
 #install.packages("lattice")
 #install.packages("SpaDES")
+install.packages('box')
+library("box")
 library("class")
 library("cluster")
 library("rpart")
@@ -75,9 +79,11 @@ library("lattice") # require is design for use inside functions
 # memory.size( TRUE )   # check the maximum memory that can be allocated
 # memory.limit( size = 3800 )   # increase the available memory
 
-for (f in list.files(KDARfunctions,pattern="*.R")) {
-  try(source(paste(KDARfunctions,f,sep=""),local=FALSE))
-}
+box::use(lib/getFileName.R[...])
+
+#for (f in list.files(KDARfunctions,pattern="*.R")) {
+#  try(source(paste(KDARfunctions,f,sep=""),local=FALSE))
+#}
 
 
 ################################################################################################

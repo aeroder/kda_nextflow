@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 setElementInSet <- function( setA , setB )
 {
     found <- rep( FALSE , length( setA ) )

@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 concatenate <- function( myvect , mysep="" )
 {
   if ( is.null( myvect ) )

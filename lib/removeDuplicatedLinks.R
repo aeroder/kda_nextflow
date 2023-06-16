@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 removeDuplicatedLinks <- function( linkpairs , directed = FALSE )
 {
     if ( isTRUE( all.equal( dim( linkpairs )[1] , 1 ) ) )

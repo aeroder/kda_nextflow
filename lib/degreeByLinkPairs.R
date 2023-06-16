@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 degreeByLinkPairs <- function( linkpairs , directed = F , cleangarbage = F )
 {
     codepair <- c( 0 , 1 )  #[1] for no connection, [2] for connection

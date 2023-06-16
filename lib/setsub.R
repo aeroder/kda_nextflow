@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 setsub <- function( setA , setB )
 {
     if ( length( setA ) > length( setB ) )
