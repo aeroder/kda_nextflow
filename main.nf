@@ -1,7 +1,7 @@
 /*
  * pipeline input parameters
  */
-params.source_folder = "$projectDir/bin/R/"
+params.source_folder = "$projectDir/lib/R/"
 params.direction = "undirected"
 params.BN_filename = "$projectDir/input/BN_digraph_pruned_formatted"
 params.genelist_filename = "$projectDir/input/KDAInputFile.txt"
@@ -30,7 +30,7 @@ process RUN_KDA {
 
     script: 
     """
-    R-keydriver-analysis.R $direction $BN_filename $input_filename $outputDir $layers 
+    R-keydriver-analysis.R $source_folder $direction $BN_filename $input_filename $outputDir $layers 
     """
 }
 

@@ -46,7 +46,7 @@ outputDirectory = args[5] #where you want this to be saved. This creates a subfo
 number_of_layers = args[6] #normally 6 steps away. 
 
 ##Location of KDA R functions, make sure / at the end
-#KDARfunctions = "lib"
+KDARfunctions = source_folder
 
 fcausalnet <- networkFile
 finputlist <- targetFile
@@ -68,22 +68,21 @@ if (directed) {
 #install.packages("rpart")
 #install.packages("lattice")
 #install.packages("SpaDES")
-install.packages('box')
-library("box")
 library("class")
 library("cluster")
 library("rpart")
 library("lattice") # require is design for use inside functions 
+library("glue")
 
 # Windows
 # memory.size( TRUE )   # check the maximum memory that can be allocated
 # memory.limit( size = 3800 )   # increase the available memory
 
-box::use(lib/getFileName.R[...])
+# box::use(workspace/kda_nextflow/lib/getFileName.R[...])
 
-#for (f in list.files(KDARfunctions,pattern="*.R")) {
-#  try(source(paste(KDARfunctions,f,sep=""),local=FALSE))
-#}
+for (f in list.files(KDARfunctions,pattern="*.R")) {
+  try(source(glue(KDARfunctions,f)))
+}
 
 
 ################################################################################################
