@@ -84,10 +84,8 @@ ncols <- dim( listMatrix )[2]
 
 modules <- names( table( listMatrix[,ncols] ) )
 
-#xkdFall <- paste( fname , "_KDx_combined.txt" , sep = "" )
-#xkdFpara <- paste( fname , "_KDx_parameters.txt" , sep = "" )
-xkdFall <- paste( fname , "_KDx_combined", format(Sys.time(), "%Y-%m-%d %I-%p"), ".txt" , sep = "" )
-xkdFpara <- paste( fname , "_KDx_parameters", format(Sys.time(), "%Y-%m-%d %I-%p"), ".txt" , sep = "" )
+xkdFall <- paste( fname , "_KDx_combined", ".txt" , sep = "" )
+xkdFpara <- paste( fname , "_KDx_parameters", ".txt" , sep = "" )
 xkdrMatrix <- NULL
 paraMatrix <- NULL
 
@@ -123,7 +121,6 @@ for ( em in modules ){
   dim( expandNet )
   
   allnodes <- union( expandNet[,1] , expandNet[,2] )
-  #write.table(expandNet, onetFname, sep="\t",quote=FALSE, col.names=T, row.names=FALSE)
 
   ################################################################################################
   # 4. keydriver for a given network

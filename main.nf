@@ -1,15 +1,5 @@
-/*
- * pipeline input parameters
- */
-//params.source_folder = "$projectDir/lib"
-//params.direction = "undirected"
-//params.BN_filename = "$projectDir/input/BN_digraph_pruned_formatted"
-//params.genelist_filename = "$projectDir/input/KDAInputFile_orange.txt"
-//params.outputDir = "results/"
-//params.layers = 6
-
 log.info """\
-    R N A S E Q - N F   P I P E L I N E
+    K D A - N F   P I P E L I N E
     ===================================
     direction              : ${params.direction}
     layers                 : ${params.layers}
@@ -28,6 +18,11 @@ process RUN_KDA {
     path input_filename
     //val outputDir
     val layers
+
+    output:
+    path '*keydriver.txt'
+    path '*combined.txt'
+    path '*parameters.txt'
 
     script: 
     """
