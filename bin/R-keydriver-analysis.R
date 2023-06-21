@@ -35,7 +35,7 @@ args <- commandArgs(trailingOnly = TRUE)
 
 source_folder <- args[1] 
 
-if (args[2] %in% c("directed","Directed") {
+if (args[2] %in% c("directed") {
   directed <- TRUE
 } else {
   directed <- FALSE

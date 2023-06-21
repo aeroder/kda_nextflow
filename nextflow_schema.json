@@ -58,7 +58,7 @@
           "type": "string",
           "default": "undirected",
           "description": "Descriptor of the network, directed or undirected",
-          "enum": ["directed", "undirected", "Directed", "Undirected"]
+          "enum": ["directed", "undirected"]
         },
         "layers": {
           "type": "string",
