@@ -37,6 +37,6 @@ process RUN_KDA {
 
 workflow {
     
-    runkda_ch = RUN_KDA(params.source_folder,params.direction,params.BN_filename,params.genelist_filename,params.outputDir,params.layers)
+    runkda_ch = RUN_KDA(params.source_folder,params.direction,params.BN_filename,params.genelist_filename,params.layers)
 
 }
