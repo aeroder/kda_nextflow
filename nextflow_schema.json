@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/./master/nextflow_schema.json",
+  "title": "kda_nextflow pipeline parameters",
+  "description": "Key Driver Analysis for Bayesian networks pipeline",
+  "type": "object",
+  "definitions": {
+    "input_output": {
+      "title": "input/output",
+      "type": "object",
+      "description": "",
+      "default": "",
+      "properties": {
+        "BN_filename": {
+          "type": "string",
+          "default": "None",
+          "description": "Bayesian Network",
+          "format": "file-path"
+        },
+        "genelist_filename": {
+          "type": "string",
+          "default": "None",
+          "description": "File containing list of genes of interest and identifier",
+          "format": "file-path",
+          "mimetype": "txt/tsv"
+        },
+        "outputDir": {
+          "type": "string",
+          "default": "None",
+          "description": "Directory on GCS that output should be written to",
+          "format": "directory-path"
+        }
+      },
+      "help_text": "",
+      "required": ["BN_filename", "genelist_filename", "outputDir"]
+    },
+    "scripts_folder": {
+      "title": "Scripts folder",
+      "type": "object",
+      "description": "",
+      "default": "",
+      "properties": {
+        "source_folder": {
+          "type": "string",
+          "default": "$projectDir/lib/",
+          "description": "Folder containing scripts to source, default is the lib directory in the project folder",
+          "format": "directory-path"
+        }
+      }
+    },
+    "pipeline_parameters": {
+      "title": "Pipeline parameters",
+      "type": "object",
+      "description": "",
+      "default": "",
+      "properties": {
+        "direction": {
+          "type": "string",
+          "default": "undirected",
+          "description": "Descriptor of the network, directed or undirected",
+          "enum": ["directed", "undirected"]
+        },
+        "layers": {
+          "type": "string",
+          "default": "6",
+          "description": "Number of layers at which to look for a Key Driver",
+          "enum": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "#/definitions/input_output"
+    },
+    {
+      "$ref": "#/definitions/scripts_folder"
+    },
+    {
+      "$ref": "#/definitions/pipeline_parameters"
+    }
+  ]
+}

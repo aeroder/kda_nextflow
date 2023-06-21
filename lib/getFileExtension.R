@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 getFileExtension <- function( fullfname )
 {
     splitted <- unlist( strsplit( fullfname , "\\." ) )

@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 keydriverInSubnetwork <- function(linkpairs, signature, background=NULL, directed=T, nlayers=6, 
                                    enrichedNodes_percent_cut=-1, FET_pvalue_cut=0.05, 
                                    boost_hubs=T, dynamic_search=T, bonferroni_correction=T, expanded_network_as_signature =F) {

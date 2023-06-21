@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 getSubnetworkLinkPairs <- function( linkpairs , subnetNodes )
 {
    mergeright <- merge( linkpairs , subnetNodes , by.x = 2 , by.y = 1 , all = FALSE )

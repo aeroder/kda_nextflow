@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 downStreamGenes <- function( netpairs , seednodes , N = 100 , directed = TRUE )
 {
    prenodes = seednodes

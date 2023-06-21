@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 getAllParts <- function( fullfnames , sep = "-" , retLen = FALSE )
 {
   splitted <- unlist( strsplit( fullfnames[1] , sep ) )

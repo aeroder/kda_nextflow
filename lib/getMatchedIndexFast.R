@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 getMatchedIndexFast=function(cvector, subvect){
   fullindex = c(1:length(cvector) )
   orgIdx    = cbind(cvector, fullindex)

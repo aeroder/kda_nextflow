@@ -1,3 +1,4 @@
+#!/usr/bin/env Rscript
 replaceString <- function( fullfnames , oldstr , newstr )
 {
   no.files <- length( fullfnames )

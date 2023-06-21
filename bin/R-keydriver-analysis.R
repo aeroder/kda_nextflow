@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+#
 ##-----------------------------------------------------------------------
 # Input:
 #   1. directed or undirected network: "Directed" OR "Undirected";
@@ -31,40 +33,35 @@ args <- commandArgs(trailingOnly = TRUE)
 # args[4]="/results/"
 # args[5]=6
 
-if (args[1] == "Directed") {
+source_folder <- args[1] 
+
+if (args[2] %in% c("directed")) {
   directed <- TRUE
 } else {
   directed <- FALSE
 }
-networkFile = args[2] #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
-targetFile = args[3] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
-outputDirectory = args[4] #where you want this to be saved. This creates a subfolder called KDA. 
+networkFile = args[3] #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
+targetFile = args[4] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
+#outputDirectory = args[5] #where you want this to be saved. This creates a subfolder called KDA. 
 number_of_layers = args[5] #normally 6 steps away. 
 
 ##Location of KDA R functions, make sure / at the end
-KDARfunctions = "code/R/"
+KDARfunctions = source_folder
 
 fcausalnet <- networkFile
 finputlist <- targetFile
 layer <- as.numeric(number_of_layers)
-outputDir <- outputDirectory
+#outputDir <- outputDirectory
 fgeneinfo <- NULL
 
 # 2. specify the directory for holding analysis results
 
-if (directed) {
-  dir.create(paste(outputDir, "KeyDriversDirected/", sep = ""))
-} else {
-  dir.create( paste(outputDir,"KeyDriversUndirected/",sep=""))
-}
+#if (directed) {
+#  dir.create(paste(outputDir, "KeyDriversDirected/", sep = ""))
+#} else {
+#  dir.create( paste(outputDir,"KeyDriversUndirected/", sep=""))
+#}
 
-# for testing
-# fcausalnet <- "input/BN_digraph_pruned_formatted"
-# finputlist <- "input/KDAInputFile.txt"
-# layer <- as.numeric(6)
-# outputDir <- "results/"
-
-#
 # -----------------------------End of Parameters to be changed --------------------------------------
 #install.packages("class")
 #install.packages("cluster")
@@ -74,15 +71,17 @@ if (directed) {
 library("class")
 library("cluster")
 library("rpart")
-# library( sma ) # this is needed for plot.mat below
 library("lattice") # require is design for use inside functions 
+library("glue")
 
 # Windows
 # memory.size( TRUE )   # check the maximum memory that can be allocated
 # memory.limit( size = 3800 )   # increase the available memory
 
+# box::use(workspace/kda_nextflow/lib/getFileName.R[...])
+
 for (f in list.files(KDARfunctions,pattern="*.R")) {
-  try(source(paste(KDARfunctions,f,sep=""),local=FALSE))
+  try(source(glue(KDARfunctions,f)))
 }
 
 
@@ -95,15 +94,18 @@ cnet = cnet[cnet[,2] != "", ]
 
 totalnodes <- union( cnet[,1] , cnet[,2] )
 
-#fname <- gsub(".*/","",getFileName(fcausalnet))
-fname <- gsub(".*/","",fcausalnet)
+fname <- gsub(".*/","",getFileName(fcausalnet))
+#fname <- gsub(".*/","",fcausalnet)
+print(fname)
 
-if ( directed ){
-  fname <- paste( outputDir,"KeyDriversDirected/", fname , "_L" , layer , sep = "" )
-}else{
-  fname <- paste( outputDir,"KeyDriversUndirected/", fname, "_L", layer , 
-  sep = "" )
-}
+#if ( directed ){
+#  fname <- paste( outputDir,"KeyDriversDirected/", fname , "_L" , layer , sep = "" )
+#}else{
+#  fname <- paste( outputDir,"KeyDriversUndirected/", fname, "_L", layer , 
+#  sep = "" )
+#}
+
+fname <- paste(fname , "_L" , layer , sep = "")
 
 ################################################################################
 # 2. read in gene lists

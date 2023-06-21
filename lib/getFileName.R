@@ -1,3 +1,5 @@
+#!/usr/bin/env Rscript
+#' @export
 getFileName <- function( fullfname )
 {
     ext <- getFileExtension( fullfname )
