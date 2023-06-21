@@ -14,19 +14,25 @@
         "BN_filename": {
           "type": "string",
           "default": "None",
-          "description": "Bayesian Network"
+          "description": "Bayesian Network",
+          "format": "file-path"
         },
         "genelist_filename": {
           "type": "string",
           "default": "None",
-          "description": "File containing list of genes of interest and identifier"
+          "description": "File containing list of genes of interest and identifier",
+          "format": "file-path",
+          "mimetype": "txt/tsv"
         },
         "outputDir": {
           "type": "string",
           "default": "None",
-          "description": "Directory on GCS that output should be written to"
+          "description": "Directory on GCS that output should be written to",
+          "format": "directory-path"
         }
-      }
+      },
+      "help_text": "",
+      "required": ["BN_filename", "genelist_filename", "outputDir"]
     },
     "scripts_folder": {
       "title": "Scripts folder",
