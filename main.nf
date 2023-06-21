@@ -4,7 +4,7 @@
 params.source_folder = "$projectDir/lib/R/"
 params.direction = "undirected"
 params.BN_filename = "$projectDir/input/BN_digraph_pruned_formatted"
-params.genelist_filename = "$projectDir/input/KDAInputFile.txt"
+params.genelist_filename = "$projectDir/input/KDAInputFile_orange.txt"
 params.outputDir = "results/"
 params.layers = 6
 
