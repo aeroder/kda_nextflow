@@ -19,7 +19,6 @@ log.info """\
     .stripIndent()
 
 process RUN_KDA {
-    container = 'run_kda.dockerfile'
 
     input:
     val source_folder
