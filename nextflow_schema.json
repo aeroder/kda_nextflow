@@ -1,33 +1,42 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://raw.githubusercontent.com/./master/nextflow_schema.json",
-  "title": ". pipeline parameters",
-  "description": "",
+  "title": "kda_nextflow pipeline parameters",
+  "description": "Key Driver Analysis for Bayesian networks pipeline",
   "type": "object",
   "properties": {
     "source_folder": {
       "type": "string",
-      "default": null
+      "default": "$projectDir/lib/",
+      "description": "Folder containing scripts to source, default is the lib directory in the project folder",
+      "format": "directory-path"
     },
     "direction": {
       "type": "string",
-      "default": null
+      "default": "undirected",
+      "description": "Descriptor of the network, directed or undirected",
+      "enum": ["directed", "undirected", "Directed", "Undirected"]
     },
     "BN_filename": {
       "type": "string",
-      "default": null
+      "default": "None",
+      "description": "Bayesian Network"
     },
     "genelist_filename": {
       "type": "string",
-      "default": null
+      "default": "None",
+      "description": "File containing list of genes of interest and identifier"
     },
     "outputDir": {
       "type": "string",
-      "default": null
+      "default": "None",
+      "description": "Directory on GCS that output should be written to"
     },
     "layers": {
       "type": "string",
-      "default": null
+      "default": "6",
+      "description": "Number of layers at which to look for a Key Driver",
+      "enum": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     }
   }
 }
