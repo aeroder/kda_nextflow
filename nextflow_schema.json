@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/./master/nextflow_schema.json",
+  "title": ". pipeline parameters",
+  "description": "",
+  "type": "object",
+  "properties": {
+    "source_folder": {
+      "type": "string",
+      "default": null
+    },
+    "direction": {
+      "type": "string",
+      "default": null
+    },
+    "BN_filename": {
+      "type": "string",
+      "default": null
+    },
+    "genelist_filename": {
+      "type": "string",
+      "default": null
+    },
+    "outputDir": {
+      "type": "string",
+      "default": null
+    },
+    "layers": {
+      "type": "string",
+      "default": null
+    }
+  }
+}
