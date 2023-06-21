@@ -24,14 +24,13 @@
 #
 #
 # -------------------- Parameters to be changed -------------------------
+library("class")
+library("cluster")
+library("rpart")
+library("lattice") # require is design for use inside functions 
+library("glue")
 
 args <- commandArgs(trailingOnly = TRUE)
-#For troubleshoting
-# args[1]="Undirected"
-# args[2]="/data/demoNet.txt"
-# args[3]="/data/demoList.txt"
-# args[4]="/results/"
-# args[5]=6
 
 source_folder <- args[1] 
 
@@ -46,7 +45,29 @@ targetFile = args[4] #Either local or global seeding gene list. (V1(gene name of
 number_of_layers = args[5] #normally 6 steps away. 
 
 ##Location of KDA R functions, make sure / at the end
-KDARfunctions = source_folder
+# source functions:
+source(glue("{source_folder}/concatenate.R"))
+source(glue("{source_folder}/configureNodeVisualization.R"))
+source(glue("{source_folder}/degreeByLinkPairs.R"))
+source(glue("{source_folder}/downStreamGenes.R"))
+source(glue("{source_folder}/findNLayerNeighborsLinkPairs.R"))
+source(glue("{source_folder}/getAllParts.R"))
+source(glue("{source_folder}/getFileName.R"))
+source(glue("{source_folder}/getFileExtension.R"))
+source(glue("{source_folder}/getMatchedIndexFast.R"))
+source(glue("{source_folder}/getSubnetworkLinkPairs.R"))
+source(glue("{source_folder}/keyDriverAnalysis.R"))
+source(glue("{source_folder}/keydriverInSubnetwork.R"))
+source(glue("{source_folder}/makeSNP.R"))
+source(glue("{source_folder}/mergeTwoMatricesByKeepAllPrimary.R"))
+source(glue("{source_folder}/removeDuplicatedLinks.R"))
+source(glue("{source_folder}/replaceString.R"))
+source(glue("{source_folder}/setElementInSet.R"))
+source(glue("{source_folder}/setInSets.R"))
+source(glue("{source_folder}/setsub.R"))
+source(glue("{source_folder}/splitString.R"))
+
+#KDARfunctions = source_folder
 
 fcausalnet <- networkFile
 finputlist <- targetFile
@@ -68,11 +89,7 @@ fgeneinfo <- NULL
 #install.packages("rpart")
 #install.packages("lattice")
 #install.packages("SpaDES")
-library("class")
-library("cluster")
-library("rpart")
-library("lattice") # require is design for use inside functions 
-library("glue")
+
 
 # Windows
 # memory.size( TRUE )   # check the maximum memory that can be allocated
@@ -81,10 +98,9 @@ library("glue")
 # box::use(workspace/kda_nextflow/lib/getFileName.R[...])
 
 # source scripts with path to script folder
-source("../lib/*.R")
-for (f in list.files(KDARfunctions,pattern="*.R")) {
-  try(source(glue(KDARfunctions,f)))
-}
+#for (f in list.files(KDARfunctions,pattern="*.R")) {
+#  try(source(glue(KDARfunctions,f)))
+#}
 
 
 ################################################################################################

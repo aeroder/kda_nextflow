@@ -1,12 +1,12 @@
 /*
  * pipeline input parameters
  */
-params.source_folder = "$projectDir/lib/R/"
-params.direction = "undirected"
-params.BN_filename = "$projectDir/input/BN_digraph_pruned_formatted"
-params.genelist_filename = "$projectDir/input/KDAInputFile_orange.txt"
-params.outputDir = "results/"
-params.layers = 6
+//params.source_folder = "$projectDir/lib"
+//params.direction = "undirected"
+//params.BN_filename = "$projectDir/input/BN_digraph_pruned_formatted"
+//params.genelist_filename = "$projectDir/input/KDAInputFile_orange.txt"
+//params.outputDir = "results/"
+//params.layers = 6
 
 log.info """\
     R N A S E Q - N F   P I P E L I N E
@@ -36,7 +36,7 @@ process RUN_KDA {
 }
 
 workflow {
-    
+
     runkda_ch = RUN_KDA(params.source_folder,params.direction,params.BN_filename,params.genelist_filename,params.layers)
 
 }
