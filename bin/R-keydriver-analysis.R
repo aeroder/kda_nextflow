@@ -80,6 +80,8 @@ library("glue")
 
 # box::use(workspace/kda_nextflow/lib/getFileName.R[...])
 
+# source scripts with path to script folder
+source("../lib/*.R")
 for (f in list.files(KDARfunctions,pattern="*.R")) {
   try(source(glue(KDARfunctions,f)))
 }
