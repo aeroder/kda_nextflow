@@ -19,18 +19,19 @@ log.info """\
     .stripIndent()
 
 process RUN_KDA {
+    publishDir params.outputDir, mode:'copy'
 
     input:
     val source_folder
     val direction
     path BN_filename
     path input_filename
-    val outputDir
+    //val outputDir
     val layers
 
     script: 
     """
-    R-keydriver-analysis.R $source_folder $direction $BN_filename $input_filename $outputDir $layers 
+    R-keydriver-analysis.R $source_folder $direction $BN_filename $input_filename $layers 
     """
 }
 
