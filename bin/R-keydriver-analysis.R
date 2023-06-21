@@ -38,14 +38,13 @@ if (args[1] %in% c("directed")) {
   directed <- FALSE
 }
 networkFile <- args[2]
-print(networkFile)
 fcausalnet <- networkFile #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
-finputlist = args[3] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
+finputlist <- args[3] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
 #outputDirectory = args[5] #where you want this to be saved. This creates a subfolder called KDA. 
 number_of_layers <- args[4] #normally 6 steps away. 
 
 functions <- args[5] 
-source(glue("./{functions}")
+source(functions)
 
 layer <- as.numeric(number_of_layers)
 #outputDir <- outputDirectory
@@ -57,7 +56,7 @@ fgeneinfo <- NULL
 
 cnet <- read.delim(fcausalnet, sep = "\t", header = F)
 cnet <- as.matrix(cnet)
-cnet = cnet[cnet[,2] != "", ]
+cnet <- cnet[cnet[,2] != "", ]
 
 totalnodes <- union( cnet[,1] , cnet[,2] )
 

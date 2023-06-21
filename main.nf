@@ -31,7 +31,7 @@ process RUN_KDA {
 
     script: 
     """
-    R-keydriver-analysis.R $direction $BN_filename $input_filename $layers functions.R  
+    R-keydriver-analysis.R $direction $BN_filename $input_filename $layers $projectDir/bin/functions.R  
     """
 }
 
