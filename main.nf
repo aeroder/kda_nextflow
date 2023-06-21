@@ -22,7 +22,7 @@ process RUN_KDA {
     publishDir params.outputDir, mode:'copy'
 
     input:
-    val source_folder
+    //val source_folder
     val direction
     path BN_filename
     path input_filename
@@ -31,12 +31,12 @@ process RUN_KDA {
 
     script: 
     """
-    R-keydriver-analysis.R $source_folder $direction $BN_filename $input_filename $layers 
+    R-keydriver-analysis.R $direction $BN_filename $input_filename $layers functions.R  
     """
 }
 
 workflow {
 
-    runkda_ch = RUN_KDA(params.source_folder,params.direction,params.BN_filename,params.genelist_filename,params.layers)
+    runkda_ch = RUN_KDA(params.direction,params.BN_filename,params.genelist_filename,params.layers)
 
 }

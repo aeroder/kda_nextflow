@@ -32,40 +32,41 @@ library("glue")
 
 args <- commandArgs(trailingOnly = TRUE)
 
-source_folder <- args[1] 
-
-if (args[2] %in% c("directed")) {
+if (args[1] %in% c("directed")) {
   directed <- TRUE
 } else {
   directed <- FALSE
 }
-networkFile = args[3] #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
-targetFile = args[4] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
+networkFile = args[2] #ParentChild, BN_digraph_pruned_formatted, (V1(parent), V2(child), tab delim)
+targetFile = args[3] #Either local or global seeding gene list. (V1(gene name of network space), V2(group name string)) Break this into parallel jobs. If global, just use all genes in the network in V1, call V2 "Allnodes" or "global". 
 #outputDirectory = args[5] #where you want this to be saved. This creates a subfolder called KDA. 
-number_of_layers = args[5] #normally 6 steps away. 
+number_of_layers = args[4] #normally 6 steps away. 
+
+functions <- args[5] 
+source(glue("./{functions}")
 
 ##Location of KDA R functions, make sure / at the end
 # source functions:
-source(glue("{source_folder}/concatenate.R"))
-source(glue("{source_folder}/configureNodeVisualization.R"))
-source(glue("{source_folder}/degreeByLinkPairs.R"))
-source(glue("{source_folder}/downStreamGenes.R"))
-source(glue("{source_folder}/findNLayerNeighborsLinkPairs.R"))
-source(glue("{source_folder}/getAllParts.R"))
-source(glue("{source_folder}/getFileName.R"))
-source(glue("{source_folder}/getFileExtension.R"))
-source(glue("{source_folder}/getMatchedIndexFast.R"))
-source(glue("{source_folder}/getSubnetworkLinkPairs.R"))
-source(glue("{source_folder}/keyDriverAnalysis.R"))
-source(glue("{source_folder}/keydriverInSubnetwork.R"))
-source(glue("{source_folder}/makeSNP.R"))
-source(glue("{source_folder}/mergeTwoMatricesByKeepAllPrimary.R"))
-source(glue("{source_folder}/removeDuplicatedLinks.R"))
-source(glue("{source_folder}/replaceString.R"))
-source(glue("{source_folder}/setElementInSet.R"))
-source(glue("{source_folder}/setInSets.R"))
-source(glue("{source_folder}/setsub.R"))
-source(glue("{source_folder}/splitString.R"))
+#source(glue("{source_folder}/concatenate.R"))
+#source(glue("{source_folder}/configureNodeVisualization.R"))
+#source(glue("{source_folder}/degreeByLinkPairs.R"))
+#source(glue("{source_folder}/downStreamGenes.R"))
+#source(glue("{source_folder}/findNLayerNeighborsLinkPairs.R"))
+#source(glue("{source_folder}/getAllParts.R"))
+#source(glue("{source_folder}/getFileName.R"))
+#source(glue("{source_folder}/getFileExtension.R"))
+#source(glue("{source_folder}/getMatchedIndexFast.R"))
+#source(glue("{source_folder}/getSubnetworkLinkPairs.R"))
+#source(glue("{source_folder}/keyDriverAnalysis.R"))
+#source(glue("{source_folder}/keydriverInSubnetwork.R"))
+#source(glue("{source_folder}/makeSNP.R"))
+#source(glue("{source_folder}/mergeTwoMatricesByKeepAllPrimary.R"))
+#source(glue("{source_folder}/removeDuplicatedLinks.R"))
+#source(glue("{source_folder}/replaceString.R"))
+#source(glue("{source_folder}/setElementInSet.R"))
+#source(glue("{source_folder}/setInSets.R"))
+#source(glue("{source_folder}/setsub.R"))
+#source(glue("{source_folder}/splitString.R"))
 
 #KDARfunctions = source_folder
 

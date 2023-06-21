@@ -34,20 +34,6 @@
       "help_text": "",
       "required": ["BN_filename", "genelist_filename", "outputDir"]
     },
-    "scripts_folder": {
-      "title": "Scripts folder",
-      "type": "object",
-      "description": "",
-      "default": "",
-      "properties": {
-        "source_folder": {
-          "type": "string",
-          "default": "$projectDir/lib/",
-          "description": "Folder containing scripts to source, default is the lib directory in the project folder",
-          "format": "directory-path"
-        }
-      }
-    },
     "pipeline_parameters": {
       "title": "Pipeline parameters",
       "type": "object",
@@ -72,9 +58,6 @@
   "allOf": [
     {
       "$ref": "#/definitions/input_output"
-    },
-    {
-      "$ref": "#/definitions/scripts_folder"
     },
     {
       "$ref": "#/definitions/pipeline_parameters"
