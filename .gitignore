@@ -12,6 +12,7 @@ ignore/
 data/
 work/
 results/
+lib/
 
 # Session Data files
 .RData
