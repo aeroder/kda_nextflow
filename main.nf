@@ -12,11 +12,9 @@ process RUN_KDA {
     publishDir params.outputDir, mode:'copy'
 
     input:
-    //val source_folder
     val direction
     path BN_filename
     path input_filename
-    //val outputDir
     val layers
 
     output:
@@ -26,7 +24,7 @@ process RUN_KDA {
 
     script: 
     """
-    R-keydriver-analysis.R $direction $BN_filename $input_filename $layers $projectDir/bin/functions.R  
+    R-keydriver-analysis.R $direction $BN_filename $input_filename $layers 
     """
 }
 
